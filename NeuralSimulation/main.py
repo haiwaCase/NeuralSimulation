@@ -2,6 +2,8 @@ import pygame
 import time
 import json
 import Render.Renderer as Renderer
+from Entities.Fox import Fox
+from Math.Vec2 import Vec2
 
 WIDTH = 1280
 HEIGHT = 720
@@ -17,11 +19,11 @@ def load_title():
     loaded_json = json.loads(data_str)
     return loaded_json["Title"]
 
-def update():
-    Renderer.update(pygame)
+def update(entities):
+    Renderer.update(pygame, entities)
 
-def render():
-    Renderer.render(pygame)
+def render(screen, entities):
+    Renderer.render(pygame, screen, entities)
 
 def main():
     load_title()
@@ -32,13 +34,20 @@ def main():
 
     running = True
 
+    # Intitialisation des entités
+    vec = Vec2(0, 0, 0)
+    fox = Fox(vec)
+
+    # Object list
+    entities = [fox]
+
     while running:
 
         # Rendu à 60 images par seconde
         time.sleep(1 / 60)
 
-        update()
-        render()
+        update(entities)
+        render(screen, entities)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
