@@ -1,15 +1,33 @@
 import pygame
+import time
+import Render.Renderer as Renderer
 
-pygame.init()
+def update():
+    Renderer.update(pygame)
 
-screen = pygame.display.set_mode((1280, 720))
-pygame.display.set_caption("NeuralSimulation")
+def render():
+    Renderer.render(pygame)
 
-running = True
+def main():
+    pygame.init()
 
-while running:
+    screen = pygame.display.set_mode((1280, 720))
+    pygame.display.set_caption("NeuralSimulation")
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-            pygame.quit()
+    running = True
+
+    while running:
+
+        # Rendu à 60 images par seconde
+        time.sleep(1 / 60)
+
+        update()
+        render()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+
+if __name__ == '__main__':
+    main()
