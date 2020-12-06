@@ -2,6 +2,9 @@ import pygame
 import time
 import Render.Renderer as Renderer
 
+WIDTH = 1280
+HEIGHT = 720
+
 def update():
     Renderer.update(pygame)
 
@@ -11,7 +14,7 @@ def render():
 def main():
     pygame.init()
 
-    screen = pygame.display.set_mode((1280, 720))
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("NeuralSimulation")
 
     running = True
