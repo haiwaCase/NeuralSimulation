@@ -1,9 +1,14 @@
-class Entity:
+import pygame
 
-    def __init__(self, position, happiness):
+
+class Entity(pygame.sprite.Sprite):
+
+    def __init__(self, position, happiness, sprite):
+        super().__init__()
         self.position = position
         self.happiness = happiness
         self.zoom_size = 1
+        self.image = pygame.image.load(sprite)
 
     def get_position(self):
         return self.position
@@ -29,3 +34,6 @@ class Entity:
 
     def get_zoom_size(self):
         return self.zoom_size
+
+    def get_image(self):
+        return self.image

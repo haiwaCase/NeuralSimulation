@@ -1,8 +1,8 @@
 import sys
+import Utils.Resizer as Resizer
 from Entities.Fox import Fox
 
 def update(pygame, entities, zoom):
-
     # Gestion des inputs
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -23,11 +23,12 @@ def update(pygame, entities, zoom):
         entity.set_zoom_size(zoom)
 
 def render(pygame, screen, entities, zoom):
+    # Clear l'écran à chaque itération
     screen.fill((0, 0, 0))
     for entity in entities:
         screen.blit(entity.image, (entity.get_position().get_x(), entity.get_position().get_y()))
         if type(entity) is Fox:
             print("mpm")
-            entity.set_image_scale(zoom.get_zoom())
+            Resizer.change_image_scale(zoom, entity)
 
     pygame.display.flip()
