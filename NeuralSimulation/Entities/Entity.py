@@ -3,6 +3,7 @@ class Entity:
     def __init__(self, position, happiness):
         self.position = position
         self.happiness = happiness
+        self.zoom_size = 1
 
     def get_position(self):
         return self.position
@@ -23,3 +24,8 @@ class Entity:
         self.happiness += terrain
         #Todo : rajouter des impact
 
+    def set_zoom_size(self, a):
+        self.zoom_size = a
+
+    def get_zoom_size(self):
+        return self.zoom_size
