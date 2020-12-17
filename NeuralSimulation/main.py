@@ -21,10 +21,10 @@ def load_title():
     return loaded_json["Title"]
 
 def update(entities, zoom):
-    Renderer.update(pygame, entities, zoom)
+    Renderer.update(entities, zoom)
 
 def render(screen, entities, zoom):
-    Renderer.render(pygame, screen, entities, zoom)
+    Renderer.render(screen, entities, zoom)
 
 def main():
     load_title()
